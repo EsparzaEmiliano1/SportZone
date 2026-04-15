@@ -1,28 +1,21 @@
-# Node modules
+# Dependency directories
 node_modules/
-package-lock.json
-yarn.lock
+# package-lock.json  
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-*.egg-info/
-dist/
-build/
+# Environment variables
+.env
+.env.local
+.env.*.local
 
-# IDE
+# Angular specific
+**/.angular/
+**/dist/
+**/tmp/
+**/out-tsc/
+
+# IDE / OS
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
-
-# OS
 .DS_Store
 Thumbs.db
 
@@ -31,7 +24,6 @@ logs/
 *.log
 npm-debug.log*
 
-# Environment variables
-.env
-.env.local
-.env.*.local
+__pycache__/
+*.py[cod]
+venv/
