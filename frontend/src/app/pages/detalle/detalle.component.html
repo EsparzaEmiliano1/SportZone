@@ -1,0 +1,26 @@
+<div *ngIf="producto" style="padding: 20px; font-family: sans-serif;">
+  <button routerLink="/catalogo" style="margin-bottom: 20px; cursor: pointer;">⬅ Volver al catálogo</button>
+  
+  <div style="display: flex; gap: 30px; background: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <img [src]="producto.imagen" [alt]="producto.nombre" style="width: 300px; height: 300px; object-fit: contain; background: white; border-radius: 5px;">
+    
+    <div>
+      <h1 style="margin-top: 0;">{{ producto.nombre }}</h1>
+      <p style="color: #666; font-size: 1.1rem;">Categoría: <strong>{{ producto.categoria }}</strong></p>
+      <h2 style="color: #2c3e50; font-size: 2rem;">${{ producto.precio }}</h2>
+      
+      <div style="margin-top: 20px; padding: 15px; background: #e9ecef; border-radius: 5px;">
+        <p><strong>Stock disponible:</strong> {{ producto.stock }} piezas</p>
+        <p><strong>ID del producto:</strong> #{{ producto.id }}</p>
+      </div>
+
+      <button style="margin-top: 20px; padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Añadir al carrito
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!producto" style="padding: 50px; text-align: center;">
+  <h3>Cargando información del producto...</h3>
+</div>

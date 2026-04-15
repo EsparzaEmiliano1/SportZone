@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { InicioComponent } from './pages/inicio/inicio'; 
 import { CatalogoComponent } from './pages/catalogo/catalogo.component';
-import { DetalleComponent } from './pages/detalle/detalle';
+import { DetalleComponent } from './pages/detalle/detalle.component';
 import { AltaProductoComponent } from './pages/alta-producto/alta-producto.component';
 
 // Rutas dinamicas para navegar entre componentes   

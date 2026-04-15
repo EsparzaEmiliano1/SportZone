@@ -14,4 +14,7 @@ export class ProductoService {
   getProducto(id: number): Observable<any> {
     return this.http.get<any>(`${this.url}/${id}`);
   }
+  postProducto(producto: any) {
+  return this.http.post(this.url, producto);
+}
 }

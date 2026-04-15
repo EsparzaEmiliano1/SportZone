@@ -17,9 +17,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  db.query('SELECT * FROM productos WHERE id = ?', [req.params.id], (err, results) => {
-    if (err) return res.status(500).json({ error: err });
-    res.json(results[0]);
+  const { id } = req.params;
+  db.query('SELECT * FROM productos WHERE id = ?', [id], (err, results) => {
+    if (err) return res.status(500).json(err);
+    if (results.length === 0) return res.status(404).json({ message: "No encontrado" });
+    res.json(results[0]); 
   });
 });
 
