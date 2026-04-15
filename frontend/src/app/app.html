@@ -1,9 +1,28 @@
-<nav style="padding: 1rem; background: #f4f4f4; margin-bottom: 2rem;">
-  <a routerLink="/inicio" style="margin-right: 10px;">Inicio</a>
-  <a routerLink="/catalogo" style="margin-right: 10px;">Ver Catalogo</a>
-  <a routerLink="/alta-producto">Dar de Alta Producto</a>
-</nav>
+<header class="navbar">
+  <div class="logo">
+    <a routerLink="/inicio">SPORT<span>ZONE</span></a>
+  </div>
 
-<div class="main-container" style="padding: 0 1rem;">
+  <a routerLink="/carrito" class="cart-button">
+  <span class="icon">🛒</span>
+  <span class="badge" *ngIf="cantidad() > 0">{{ cantidad() }}</span>
+  </a>
+
+  <nav class="nav-links">
+    <a routerLink="/inicio" routerLinkActive="active">Inicio</a>
+    <a routerLink="/catalogo" routerLinkActive="active">Catalogo</a>
+    <a routerLink="/alta-producto" routerLinkActive="active">Nuevo Producto</a>
+    <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
+  </nav>
+
+  <div class="cart-container">
+    <a routerLink="/carrito" class="cart-button">
+      <span class="icon">🛒</span>
+      <span class="badge" *ngIf="cantidad() > 0">{{ cantidad() }}</span>
+    </a>
+  </div>
+</header>
+
+<main class="container">
   <router-outlet></router-outlet>
-</div>
+</main>

@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Necesario para el *ngFor
 import { RouterModule } from '@angular/router';
 import { ProductoService } from '../../services/producto.service';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -16,8 +17,11 @@ export class CatalogoComponent implements OnInit {
 
   constructor(
       private productoService: ProductoService,
-      private cdr: ChangeDetectorRef 
+      private cdr: ChangeDetectorRef,
+      private carritoService: CarritoService
     ) {}
+
+
 
   ngOnInit(): void {
     this.productoService.getProductos().subscribe({
@@ -32,5 +36,9 @@ export class CatalogoComponent implements OnInit {
         console.error('Error al conectar con el backend:', err);
       }
     });
+  }
+  agregarAlCarrito(producto: any) {
+    this.carritoService.agregarProducto(producto);
+    console.log('Producto enviado al carrito:', producto.nombre);
   }
 }
