@@ -8,10 +8,10 @@ import { CarritoService } from './services/carrito.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.css']
 })
 export class AppComponent {
   private carritoService = inject(CarritoService);
 
-  cantidad = this.carritoService.cantidadItems; 
+  cantidad = this.carritoService.cantidadTotal; 
 }

@@ -36,4 +36,28 @@ router.post('/', (req, res) => {
   );
 });
 
+const validarProducto = (req, res, next) => {
+    const { nombre, precio, stock } = req.body;
+    
+    if (!nombre || nombre.length < 3) {
+        return res.status(400).json({ error: 'El nombre es obligatorio y debe tener al menos 3 caracteres' });
+    } if (precio <= 0) {
+        return res.status(400).json({ error: 'El precio debe ser mayor a 0' }); 
+    } if (stock < 0) {
+        return res.status(400).json({ error: 'El stock no puede ser negativo' });
+    }
+    next(); 
+};
+
+// Aplicar el middleware en el POST
+router.post('/', validarProducto, (req, res) => {
+    const { nombre, categoria, marca, precio, stock, imagen, descripcion } = req.body;
+    const query = 'INSERT INTO productos (nombre, categoria, marca, precio, stock, imagen, descripcion, disponible) VALUES (?, ?, ?, ?, ?, ?, ?, 1)';
+    
+    db.query(query, [nombre, categoria, marca, precio, stock, imagen, descripcion], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.status(201).json({ id: result.insertId, mensaje: 'Producto creado exitosamente' });
+    });
+});
+
 module.exports = router;

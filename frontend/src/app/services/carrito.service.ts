@@ -4,43 +4,43 @@ import { Injectable, signal, computed } from '@angular/core';
   providedIn: 'root'
 })
 export class CarritoService {
+  // Signal privado para el estado del carrito 
   private carrito = signal<any[]>([]);
 
+  // Signal computada para el total general 
   public total = computed(() => {
     return this.carrito().reduce((acc, p) => acc + (p.precio * p.cantidad), 0);
   });
 
-  public cantidadItems = computed(() => {
+  // Signal computada para el contador de la Navbar 
+  public cantidadTotal = computed(() => {
     return this.carrito().reduce((acc, p) => acc + p.cantidad, 0);
   });
 
-  // Metodo para obtener la lista (lectura)
   obtenerCarrito() {
     return this.carrito;
   }
 
-  // Logica para agregar productos
   agregarProducto(producto: any) {
     const actual = this.carrito();
     const index = actual.findIndex(p => p.id === producto.id);
 
     if (index !== -1) {
-      // Si el producto ya existe, creamos una copia del array y aumentamos la cantidad
+      // Clonamos el array y el objeto para mantener la inmutabilidad de Signals
       const nuevoCarrito = [...actual];
-      nuevoCarrito[index].cantidad++;
+      nuevoCarrito[index] = { ...nuevoCarrito[index], cantidad: nuevoCarrito[index].cantidad + 1 };
       this.carrito.set(nuevoCarrito);
     } else {
-      // Si es nuevo, lo añadimos con cantidad inicial de 1
+      // Requisito: Agregar productos al carrito 
       this.carrito.set([...actual, { ...producto, cantidad: 1 }]);
     }
   }
 
-  // Eliminar un producto especifico
+  // Requisito: Quitar al menos un producto 
   eliminarProducto(id: number) {
     this.carrito.set(this.carrito().filter(p => p.id !== id));
   }
 
-  // Limpiar todo el carrito
   limpiarCarrito() {
     this.carrito.set([]);
   }

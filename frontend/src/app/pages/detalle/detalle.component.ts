@@ -10,7 +10,6 @@ import { ProductoService } from '../../services/producto.service';
   templateUrl: './detalle.component.html', 
   styleUrl: './detalle.component.css'      
 })
-
 export class DetalleComponent implements OnInit {
   producto: any;
 

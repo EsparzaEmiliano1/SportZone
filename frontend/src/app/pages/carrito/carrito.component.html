@@ -2,8 +2,8 @@
   <h1>Tu <span>Carrito</span></h1>
 
   <div *ngIf="items().length === 0" class="empty-msg">
-    <p>Aun no has añadido nada. ¡Ve al catalogo y busca algo pro!</p>
-    <button routerLink="/catalogo">Volver al Catalogo</button>
+    <p>Aún no has añadido nada. ¡Ve al catálogo y busca algo pro!</p>
+    <button routerLink="/catalogo" class="btn-primary">Volver al Catálogo</button>
   </div>
 
   <div *ngIf="items().length > 0" class="cart-content">
@@ -12,19 +12,16 @@
         <tr>
           <th>Producto</th>
           <th>Precio</th>
-          <th>Cantidad</th>
-          <th>Subtotal</th>
-          <th>Accion</th>
+          <th>Cantidad</th> <th>Subtotal</th>
+          <th>Acción</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of items()">
-          <td>{{ item.nombre | titlecase }}</td>
-          <td>{{ item.precio | currency:'MXN' }}</td>
-          <td>{{ item.cantidad }}</td>
+          <td>{{ item.nombre | titlecase }}</td> <td>{{ item.precio | currency:'MXN' }}</td> <td>{{ item.cantidad }}</td>
           <td>{{ (item.precio * item.cantidad) | currency:'MXN' }}</td>
           <td>
-            <button class="btn-delete" (click)="eliminar(item.id)">Eliminar</button>
+            <button class="btn-delete" (click)="eliminar(item.id)">Eliminar 🗑️</button>
           </td>
         </tr>
       </tbody>
@@ -33,8 +30,7 @@
     <div class="cart-summary">
       <h3>Resumen de Compra</h3>
       <div class="summary-row">
-        <span>Total:</span>
-        <span class="total-price">{{ total() | currency:'MXN' }}</span>
+        <span>Total General:</span> <span class="total-price">{{ total() | currency:'MXN' }}</span>
       </div>
       <button class="btn-checkout" (click)="vaciar()">Finalizar Compra</button>
     </div>

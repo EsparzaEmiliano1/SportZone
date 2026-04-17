@@ -1,0 +1,29 @@
+<div class="detalle-wrapper" *ngIf="producto">
+  <div class="detalle-card">
+    <div class="img-box">
+      <img [src]="producto.imagen" [alt]="producto.nombre">
+    </div>
+    
+    <div class="info-box">
+      <span class="categoria-tag">{{ producto.categoria | titlecase }}</span>
+      <h1>{{ producto.nombre | uppercase }}</h1>
+      <p class="marca">Colección: {{ producto.marca || 'SportZone' }}</p>
+      
+      <div class="precio-container">
+        <span class="precio-actual">{{ producto.precio | currency:'MXN' }}</span>
+        <span class="stock-info" [ngClass]="{'agotado': producto.stock === 0}">
+          Disponibilidad: {{ producto.stock > 0 ? 'En existencia' : 'Agotado' }}
+        </span>
+      </div>
+
+      <p class="descripcion-texto">{{ producto.descripcion }}</p>
+
+      <div class="botones">
+        <button class="btn-carrito" (click)="agregar()" [disabled]="producto.stock === 0">
+          Agregar al Carrito 🛒
+        </button>
+        <button class="btn-volver" routerLink="/catalogo">Regresar al catálogo</button>
+      </div>
+    </div>
+  </div>
+</div>

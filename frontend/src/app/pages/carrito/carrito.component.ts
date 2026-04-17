@@ -1,7 +1,7 @@
 ﻿import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../services/carrito.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 })
 export class CarritoComponent {
   public carritoService = inject(CarritoService);
+  private router = inject(Router);
   
   items = this.carritoService.obtenerCarrito();
   total = this.carritoService.total;
@@ -21,8 +22,8 @@ export class CarritoComponent {
   }
 
   vaciar() {
-    alert('¡Gracias por tu compra en SportZone!');
+    alert('¡Gracias por tu compra en SportZone Aguascalientes!');
     this.carritoService.limpiarCarrito();
+    this.router.navigate(['/catalogo']);
   }
-  
 }

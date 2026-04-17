@@ -20,13 +20,14 @@ export class AltaProductoComponent {
     private router: Router 
   ) {
     this.form = this.fb.group({
-      nombre: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
       precio: [0, [Validators.required, Validators.min(1)]],
-      stock: [0, Validators.required],
+      stock: [0, [Validators.required, Validators.min(0)]], 
       categoria: ['', Validators.required],
-      imagen: [''],
-      marca: [''],
-      descripcion: ['']
+      imagen: ['', Validators.required],
+      marca: ['', Validators.required],
+      descripcion: ['', [Validators.required, Validators.maxLength(250)]],
+      disponible: [1] 
     });
   }
 
@@ -35,14 +36,16 @@ export class AltaProductoComponent {
       this.productoService.postProducto(this.form.value).subscribe({
         next: (res) => {
           console.log('¡Producto guardado!', res);
-          alert('Producto guardado con exito en Aguascalientes');
+          alert('Producto guardado con éxito en SportZone Aguascalientes');
           this.router.navigate(['/catalogo']); 
         },
         error: (err) => {
           console.error('Error al guardar:', err);
-          alert('Hubo un error al conectar con el servidor.');
+          alert('Hubo un error al conectar con el servidor. Revisa el middleware.');
         }
       });
+    } else {
+      this.form.markAllAsTouched();
     }
   }
 }
