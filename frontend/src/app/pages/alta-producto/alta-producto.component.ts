@@ -35,7 +35,7 @@ export class AltaProductoComponent {
       this.productoService.postProducto(this.form.value).subscribe({
         next: (res) => {
           console.log('¡Producto guardado!', res);
-          alert('Producto guardado con éxito en Aguascalientes');
+          alert('Producto guardado con exito en Aguascalientes');
           this.router.navigate(['/catalogo']); 
         },
         error: (err) => {

@@ -4,25 +4,22 @@ import { Injectable, signal, computed } from '@angular/core';
   providedIn: 'root'
 })
 export class CarritoService {
-  // Lista privada de productos usando un Signal
   private carrito = signal<any[]>([]);
 
-  // Signal computado para el total de la compra
   public total = computed(() => {
     return this.carrito().reduce((acc, p) => acc + (p.precio * p.cantidad), 0);
   });
 
-  // Signal computado para contar cuántos productos hay en total
   public cantidadItems = computed(() => {
     return this.carrito().reduce((acc, p) => acc + p.cantidad, 0);
   });
 
-  // Método para obtener la lista (lectura)
+  // Metodo para obtener la lista (lectura)
   obtenerCarrito() {
     return this.carrito;
   }
 
-  // Lógica para agregar productos
+  // Logica para agregar productos
   agregarProducto(producto: any) {
     const actual = this.carrito();
     const index = actual.findIndex(p => p.id === producto.id);
@@ -38,7 +35,7 @@ export class CarritoService {
     }
   }
 
-  // Eliminar un producto específico
+  // Eliminar un producto especifico
   eliminarProducto(id: number) {
     this.carrito.set(this.carrito().filter(p => p.id !== id));
   }

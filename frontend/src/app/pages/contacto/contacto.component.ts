@@ -25,7 +25,6 @@ export class ContactoComponent {
   enviarMensaje() {
     console.log('Datos a enviar:', this.contacto);
     
-    // Aquí conectaremos con el backend en el siguiente paso
     this.http.post('http://localhost:3000/api/mensajes', this.contacto)
       .subscribe({
         next: (res) => {

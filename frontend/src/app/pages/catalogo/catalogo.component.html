@@ -1,7 +1,7 @@
 <div class="catalogo-container">
   <header class="catalogo-header">
-    <h1>Catálogo de <span>Refacciones</span></h1>
-    <p>Equipamiento de alto rendimiento para tu vehículo</p>
+    <h1>Catalogo de <span>Productos</span></h1>
+    <p>Equipamiento de alto rendimiento para deportistas</p>
   </header>
 
   <div *ngIf="productos.length === 0" class="loading-state">
@@ -9,33 +9,11 @@
     <p>Buscando productos en la base de datos...</p>
   </div>
 
-  <div class="product-grid">
-    <div *ngFor="let p of productos" class="product-card">
-      <div class="image-container">
-        <img [src]="p.imagen" [alt]="p.nombre" loading="lazy">
-        <span class="category-tag">{{ p.categoria | titlecase }}</span>
-      </div>
-
-      <div class="product-info">
-        <h3>{{ p.nombre | titlecase }}</h3>
-        <p class="brand">{{ p.marca || 'SportZone Original' }}</p>
-        
-        <div class="price-section">
-          <span class="price">{{ p.precio | currency:'MXN':'symbol':'1.2-2' }}</span>
-          <span class="stock" [ngClass]="{'low-stock': p.stock < 5}">
-            Stock: {{ p.stock }}
-          </span>
-        </div>
-
-        <div class="actions">
-          <button class="btn-detail" [routerLink]="['/productos', p.id]">
-            Ver Detalles
-          </button>
-          <button class="btn-add" (click)="agregarAlCarrito(p)">
-            Agregar 🛒
-          </button>
-        </div>
-      </div>
-    </div>
+  <div class="product-grid" *ngIf="productos.length > 0">
+    <app-producto-card 
+      *ngFor="let producto of productos" 
+      [p]="producto" 
+      (onAgregar)="agregarAlCarrito($event)">
+    </app-producto-card>
   </div>
 </div>

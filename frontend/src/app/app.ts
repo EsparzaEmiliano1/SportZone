@@ -1,21 +1,17 @@
-import { Component, signal } from '@angular/core'; 
-import { RouterOutlet, RouterLink } from '@angular/router';
-import { CarritoService } from './services/carrito.service';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { CarritoService } from './services/carrito.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, CommonModule], 
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  imports: [CommonModule, RouterModule],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
+export class AppComponent {
+  private carritoService = inject(CarritoService);
 
-export class App {
-  protected readonly title = signal('frontend');  
-    cantidad; 
-
-  constructor(public carritoService: CarritoService) {
-    this.cantidad = this.carritoService.cantidadItems;
-  }
+  cantidad = this.carritoService.cantidadItems; 
 }

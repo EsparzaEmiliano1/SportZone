@@ -1,9 +1,8 @@
 <div class="contacto-container">
-  <h1>Contáctanos</h1>
-  <p>¿Tienes dudas sobre una refacción? Nuestro equipo de SportZone te ayuda.</p>
-
+    <h1>Contactanos</h1>
+    <p>¿Tienes dudas sobre una prenda o tu pedido? Nuestro equipo de SportZone te ayuda.</p>
   <div *ngIf="enviado" class="alert-success">
-    ¡Mensaje enviado con éxito! Nos comunicaremos contigo pronto.
+    ¡Mensaje enviado con exito! Nos comunicaremos contigo pronto.
   </div>
 
   <form #contactoForm="ngForm" (ngSubmit)="enviarMensaje()" class="form-contacto">
@@ -14,15 +13,15 @@
     </div>
 
     <div class="field">
-      <label>Correo Electrónico:</label>
+      <label>Correo Electronico:</label>
       <input type="email" name="correo" [(ngModel)]="contacto.correo" required email #email="ngModel">
-      <span *ngIf="email.invalid && email.touched" class="error">Ingresa un correo válido</span>
+      <span *ngIf="email.invalid && email.touched" class="error">Ingresa un correo valido</span>
     </div>
 
     <div class="field">
       <label>Asunto:</label>
       <select name="asunto" [(ngModel)]="contacto.asunto">
-        <option value="Duda técnica">Duda técnica</option>
+        <option value="Duda tecnica">Duda tecnica</option>
         <option value="Pedido">Seguimiento de pedido</option>
         <option value="Otro">Otro</option>
       </select>
@@ -31,7 +30,7 @@
     <div class="field">
       <label>Mensaje:</label>
       <textarea name="mensaje" [(ngModel)]="contacto.mensaje" required minlength="10" #msj="ngModel"></textarea>
-      <span *ngIf="msj.invalid && msj.touched" class="error">El mensaje debe ser más largo</span>
+      <span *ngIf="msj.invalid && msj.touched" class="error">El mensaje debe ser mas largo</span>
     </div>
 
     <button type="submit" [disabled]="contactoForm.invalid">Enviar Mensaje</button>

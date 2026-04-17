@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common'; // Necesario para el *ngFor
 import { RouterModule } from '@angular/router';
 import { ProductoService } from '../../services/producto.service';
 import { CarritoService } from '../../services/carrito.service';
+import { ProductoCardComponent } from '../../components/producto-card/producto-card.component';
 
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [CommonModule, RouterModule], 
+  imports: [CommonModule, RouterModule, ProductoCardComponent], 
   templateUrl: './catalogo.component.html',
   styleUrl: './catalogo.component.css'
 })

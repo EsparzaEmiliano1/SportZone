@@ -1,0 +1,27 @@
+<div class="product-card">
+  <div class="image-container">
+    <img [src]="p.imagen" [alt]="p.nombre" loading="lazy">
+    <span class="category-tag">{{ p.categoria | titlecase }}</span>
+  </div>
+
+  <div class="product-info">
+    <h3>{{ p.nombre | titlecase }}</h3>
+    <p class="brand">{{ p.marca || 'SportZone Original' }}</p>
+    
+    <div class="price-section">
+      <span class="price">{{ p.precio | currency:'MXN':'symbol':'1.2-2' }}</span>
+      <span class="stock" [ngClass]="{'low-stock': p.stock < 5}">
+        Stock: {{ p.stock }}
+      </span>
+    </div>
+
+    <div class="actions">
+      <button class="btn-detail" [routerLink]="['/productos', p.id]">
+        Ver Detalles
+      </button>
+      <button class="btn-add" (click)="agregar()">
+        Agregar 
+      </button>
+    </div>
+  </div>
+</div>
