@@ -32,20 +32,25 @@ export class AltaProductoComponent {
   }
 
   guardar() {
-    if (this.form.valid) {
-      this.productoService.postProducto(this.form.value).subscribe({
-        next: (res) => {
-          console.log('¡Producto guardado!', res);
-          alert('Producto guardado con éxito en SportZone Aguascalientes');
-          this.router.navigate(['/catalogo']); 
-        },
-        error: (err) => {
-          console.error('Error al guardar:', err);
-          alert('Hubo un error al conectar con el servidor. Revisa el middleware.');
-        }
-      });
-    } else {
+    if (this.form.invalid) {
       this.form.markAllAsTouched();
+      return;
     }
+
+    this.productoService.postProducto(this.form.value).subscribe({
+      next: (res) => {
+        console.log('¡Producto guardado!', res);
+
+        alert('Producto guardado con éxito en SportZone Aguascalientes');
+
+        this.router.navigate(['/catalogo']).then(() => {
+          window.location.reload();
+        });
+      },
+      error: (err) => {
+        console.error('Error al guardar:', err);
+        alert('Hubo un error al conectar con el servidor.');
+      }
+    });
   }
 }

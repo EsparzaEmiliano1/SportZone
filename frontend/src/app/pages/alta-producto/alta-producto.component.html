@@ -3,34 +3,50 @@
   
   <form [formGroup]="form" (ngSubmit)="guardar()" style="display: flex; flex-direction: column; gap: 15px;">
     
+    <!-- NOMBRE -->
     <div>
-      <label style="display: block;">Nombre del Producto:</label>
+      <label>Nombre del Producto:</label>
       <input type="text" formControlName="nombre" style="width: 100%; padding: 8px;">
     </div>
 
+    <!-- PRECIO Y STOCK -->
     <div style="display: flex; gap: 10px;">
       <div style="flex: 1;">
-        <label style="display: block;">Precio ($):</label>
+        <label>Precio ($):</label>
         <input type="number" formControlName="precio" style="width: 100%; padding: 8px;">
       </div>
       <div style="flex: 1;">
-        <label style="display: block;">Stock:</label>
+        <label>Stock:</label>
         <input type="number" formControlName="stock" style="width: 100%; padding: 8px;">
       </div>
     </div>
 
     <div>
-      <label style="display: block;">Categoria (, Accesorio, etc.):</label>
+      <label>Categoría:</label>
       <input type="text" formControlName="categoria" style="width: 100%; padding: 8px;">
     </div>
 
     <div>
-      <label style="display: block;">URL de la Imagen:</label>
-      <input type="text" formControlName="imagen" placeholder="http://..." style="width: 100%; padding: 8px;">
+      <label>Marca:</label>
+      <input type="text" formControlName="marca" style="width: 100%; padding: 8px;">
     </div>
 
-    <button type="submit" [disabled]="form.invalid" 
-            style="padding: 10px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 4px;">
+    <div>
+      <label>Descripción:</label>
+      <textarea formControlName="descripcion" style="width: 100%; padding: 8px;"></textarea>
+    </div>
+
+    <!-- IMAGEN -->
+    <div>
+      <label>URL de la Imagen:</label>
+      <input type="text" formControlName="imagen" placeholder="https://..." style="width: 100%; padding: 8px;">
+    </div>
+
+    <!-- BOTÓN -->
+    <button 
+      type="submit" 
+      [disabled]="form.invalid"
+      style="padding: 10px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 4px;">
       Confirmar y Guardar
     </button>
 
