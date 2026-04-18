@@ -28,4 +28,9 @@ export class CarritoComponent {
 
   this.router.navigate(['/catalogo']);
   }
+
+  puedeComprar(): boolean {
+  return this.items().every(item => item.stock > 0 && item.cantidad <= item.stock);
+  
+}
 }

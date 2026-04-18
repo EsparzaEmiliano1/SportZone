@@ -2,7 +2,7 @@
   <h1>Tu <span>Carrito</span></h1>
 
   <div *ngIf="items().length === 0" class="empty-msg">
-    <p>Aún no has añadido nada. ¡Ve al catálogo y busca algo pro!</p>
+    <p>Aún no has añadido nada. ¡Ve al catálogo y busca algo!</p>
     <button routerLink="/catalogo" class="btn-primary">Volver al Catálogo</button>
   </div>
 
@@ -12,13 +12,16 @@
         <tr>
           <th>Producto</th>
           <th>Precio</th>
-          <th>Cantidad</th> <th>Subtotal</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
           <th>Acción</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of items()">
-          <td>{{ item.nombre | titlecase }}</td> <td>{{ item.precio | currency:'MXN' }}</td> <td>{{ item.cantidad }}</td>
+          <td>{{ item.nombre | titlecase }}</td>
+          <td>{{ item.precio | currency:'MXN' }}</td>
+          <td>{{ item.cantidad }}</td>
           <td>{{ (item.precio * item.cantidad) | currency:'MXN' }}</td>
           <td>
             <button class="btn-delete" (click)="eliminar(item.id)">Eliminar 🗑️</button>
@@ -29,10 +32,22 @@
 
     <div class="cart-summary">
       <h3>Resumen de Compra</h3>
+
       <div class="summary-row">
-        <span>Total General:</span> <span class="total-price">{{ total() | currency:'MXN' }}</span>
+        <span>Total General:</span>
+        <span class="total-price">{{ total() | currency:'MXN' }}</span>
       </div>
-      <button class="btn-checkout" (click)="vaciar()">Finalizar Compra</button>
+      <button 
+        class="btn-checkout" 
+        (click)="vaciar()" 
+        [disabled]="!puedeComprar()"
+      >
+        Finalizar Compra
+      </button>
+      <p *ngIf="!puedeComprar()" style="color:red; margin-top:10px;">
+        ⚠️ Algunos productos no tienen suficiente stock
+      </p>
+
     </div>
   </div>
 </div>
