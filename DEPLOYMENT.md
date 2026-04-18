@@ -89,7 +89,19 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./frontend/dist/frontend/browser
-          cname: esparzaemiliano1.github.io
+          publish_branch: gh-pages
+
+      - name: Configure Pages source to gh-pages
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
+            await github.rest.request('PUT /repos/{owner}/{repo}/pages', {
+              owner,
+              repo,
+              source: { branch: 'gh-pages', path: '/' }
+            });
 ```
 
 ---
