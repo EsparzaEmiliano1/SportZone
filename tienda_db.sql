@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-04-2026 a las 22:04:38
+-- Tiempo de generación: 18-04-2026 a las 05:12:56
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tienda_db`
+-- Base de datos: `sportzone`
 --
 
 -- --------------------------------------------------------
@@ -43,7 +43,9 @@ INSERT INTO `mensajes` (`id`, `nombre`, `correo`, `asunto`, `mensaje`) VALUES
 (1, 'EMILIANO DE JESUS', 'emiliano@gmail.com', 'Duda técnica', 'apapapapapa'),
 (2, 'EMILIANO DE JESUS', 'emiliano@gmail.com', 'Duda técnica', 'apapapapapa'),
 (3, 'EMILIANO DE JESUS', 'emiliano@gmail.com', 'Otro', 'papaapa\'apa'),
-(4, 'EMILIANO DE JESUS', 'emiliano@gmail.com', 'Otro', 'papaapa\'apa');
+(4, 'EMILIANO DE JESUS', 'emiliano@gmail.com', 'Otro', 'papaapa\'apa'),
+(5, 'Alejandro Contreras', 'mymmagasho123@gmail.com', 'Duda tecnica', 'Prueba para ver si jala'),
+(6, 'Alejandro Contreras', 'mymmagasho123@gmail.com', 'Duda tecnica', 'Prueba para ver si jala');
 
 -- --------------------------------------------------------
 
@@ -68,16 +70,17 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `categoria`, `marca`, `precio`, `stock`, `imagen`, `descripcion`, `disponible`) VALUES
-(4, 'Tenis Nike Air Zoom Pegasus 40', 'Calzado', 'Nike', 2699.00, 15, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff', 'Calzado de running de alto rendimiento con tecnologia de amortiguacion React para mayor comodidad.', 1),
-(5, 'Jersey Adidas Tiro 23 League', 'Ropa', 'Adidas', 899.00, 25, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab', 'Jersey de entrenamiento transpirable con tecnologia AEROREADY, ideal para el campo de juego.', 1),
+(4, 'Tenis Nike Air Zoom Pegasus 40', 'Calzado', 'Nike', 2699.00, 14, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff', 'Calzado de running de alto rendimiento con tecnologia de amortiguacion React para mayor comodidad.', 1),
+(5, 'Jersey Adidas Tiro 23 League', 'Ropa', 'Adidas', 899.00, 22, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab', 'Jersey de entrenamiento transpirable con tecnologia AEROREADY, ideal para el campo de juego.', 1),
 (6, 'Sudadera UAA Hoodie', 'Ropa', 'Under Armour', 1499.00, 0, 'https://images.unsplash.com/photo-1556821840-3a63f95609a7', 'Sudadera con capucha de mezcla de algodon sumamente suave para mantener el calor.', 0),
-(7, 'Pantalon Nike Dri-FIT Academy', 'Ropa', 'Nike', 1199.00, 10, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f', 'Pantalones de entrenamiento con tela elastica que absorbe el sudor para mayor agilidad.', 1),
-(8, 'Playera Adidas Training', 'Ropa', 'Adidas', 749.00, 30, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab', 'Playera ligera para entrenamiento intenso con tecnologia de secado rapido.', 1),
-(9, 'Shorts Nike Pro Flex', 'Ropa', 'Nike', 899.00, 20, 'https://images.unsplash.com/photo-1591129020337-c79084e668f5', 'Shorts elasticos que permiten libertad total de movimiento en el gimnasio.', 1),
-(10, 'Gorra Jordan Heritage', 'Accesorios', 'Jordan', 649.00, 12, 'https://images.unsplash.com/photo-1588850561447-417f3318f400', 'Gorra clasica con logo bordado y ajuste regulable en la parte trasera.', 1),
+(7, 'Pantalon Nike Dri-FIT Academy', 'Ropa', 'Nike', 1199.00, 9, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f', 'Pantalones de entrenamiento con tela elastica que absorbe el sudor para mayor agilidad.', 1),
+(8, 'Playera Adidas Training', 'Ropa', 'Adidas', 749.00, 29, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab', 'Playera ligera para entrenamiento intenso con tecnologia de secado rapido.', 1),
+(9, 'Shorts Nike Pro Flex', 'Ropa', 'Nike', 899.00, 20, 'https://cdn11.bigcommerce.com/s-21x65e8kfn/images/stencil/original/products/32086/146859/NIK18671_1000_1__65504.1688369851.jpg', 'Shorts elasticos que permiten libertad total de movimiento en el gimnasio.', 1),
+(10, 'Gorra Jordan Heritage', 'Accesorios', 'Jordan', 649.00, 12, 'https://i5.walmartimages.com.mx/mg/gm/3pp/asr/6d4b8527-f5d4-4b96-9929-4941f325e341.d2797946a6e6f08dd11ea893d1e59472.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF', 'Gorra clasica con logo bordado y ajuste regulable en la parte trasera.', 1),
 (11, 'Mochila Puma Phase', 'Accesorios', 'Puma', 599.00, 0, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62', 'Mochila resistente con compartimento principal amplio para equipo deportivo.', 0),
 (12, 'Tenis Reebok Nano X3', 'Calzado', 'Reebok', 2499.00, 18, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff', 'Calzado versatil diseñado para crossfit y entrenamientos funcionales.', 1),
-(13, 'zapato', 'Calzado', '', 12.00, 5, 'https://shoemakersacademy.com/wp-content/uploads/2020/03/Vans-QC-Toe-roll-scaled-1-2048x2048.jpg', '', NULL);
+(13, 'zapato', 'Calzado', '', 12.00, 5, 'https://shoemakersacademy.com/wp-content/uploads/2020/03/Vans-QC-Toe-roll-scaled-1-2048x2048.jpg', '', NULL),
+(14, '3 Pack Banda Ejercicio', 'Accesorios', 'Adidas', 700.00, 15, 'https://http2.mlstatic.com/D_NQ_NP_932149-MLM48068891967_102021-O.webp', 'Banda de tela suave ideal para realizar ejercicios y actividades diarias', 1);
 
 --
 -- Índices para tablas volcadas
@@ -103,13 +106,13 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

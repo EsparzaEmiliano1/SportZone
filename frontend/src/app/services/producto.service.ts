@@ -4,22 +4,24 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ProductoService {
-  private url = 'http://localhost:3000/api/productos';
+
+  private API = 'https://TU-BACKEND.onrender.com/api/productos'; // 🔥 CAMBIA ESTO
+
   constructor(private http: HttpClient) {}
 
   getProductos(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
+    return this.http.get<any[]>(this.API);
   }
 
   getProductoById(id: string | number) {
-    return this.http.get(`http://localhost:3000/api/productos/${id}`); 
+    return this.http.get(`${this.API}/${id}`);
   }
 
   getProducto(id: number): Observable<any> {
-    return this.http.get<any>(`${this.url}/${id}`);
+    return this.http.get<any>(`${this.API}/${id}`);
   }
+
   postProducto(producto: any) {
-  return this.http.post(this.url, producto);
-  
-}
+    return this.http.post(this.API, producto);
+  }
 }
