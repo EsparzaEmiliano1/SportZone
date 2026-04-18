@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ProductoService {
-  private url = 'http://localhost:3000/api/productos';
+  private url = 'https://sportzone-api-6eqh.onrender.com';
   constructor(private http: HttpClient) {}
 
   getProductos(): Observable<any[]> {
@@ -12,7 +12,7 @@ export class ProductoService {
   }
 
   getProductoById(id: string | number) {
-    return this.http.get(`http://localhost:3000/api/productos/${id}`); 
+    return this.http.get(`https://sportzone-api-6eqh.onrender.com/api/productos/${id}`); 
   }
 
   getProducto(id: number): Observable<any> {
