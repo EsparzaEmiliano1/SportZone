@@ -22,8 +22,10 @@ export class CarritoComponent {
   }
 
   vaciar() {
-    alert('¡Gracias por tu compra en SportZone Aguascalientes!');
-    this.carritoService.limpiarCarrito();
-    this.router.navigate(['/catalogo']);
+  alert('¡Gracias por tu compra en SportZone Aguascalientes!');
+
+  this.carritoService.finalizarCompra();
+
+  this.router.navigate(['/catalogo']);
   }
 }

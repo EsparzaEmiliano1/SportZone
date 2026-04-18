@@ -60,4 +60,32 @@ router.post('/', validarProducto, (req, res) => {
     });
 });
 
+// Actualizar stock (compra)
+router.put('/:id/stock', (req, res) => {
+  console.log('PETICIÓN DE COMPRA RECIBIDA');
+  const { id } = req.params;
+  const { cantidad } = req.body;
+
+  if (!cantidad || cantidad <= 0) {
+    return res.status(400).json({ error: 'Cantidad inválida' });
+  }
+
+  db.query(
+    'UPDATE productos SET stock = stock - ? WHERE id = ? AND stock >= ?',
+    [cantidad, id, cantidad],
+    (err, result) => {
+      if (err) {
+        console.error('Error al actualizar stock:', err);
+        return res.status(500).json({ error: 'Error en la base de datos' });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(400).json({ message: 'Stock insuficiente' });
+      }
+
+      res.json({ message: 'Stock actualizado correctamente' });
+    }
+  );
+});
+
 module.exports = router;
