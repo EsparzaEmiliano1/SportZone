@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ProductoService {
-  private url = 'https://sportzone-api-6eqh.onrender.com';
+  private url = 'https://sportzone-api-6eqh.onrender.com/api';
   constructor(private http: HttpClient) {}
 
   getProductos(): Observable<any[]> {
